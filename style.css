@@ -34,3 +34,21 @@ header{box-shadow:0 3px 10px #18394a08}.header-tools{height:32px;display:flex;ju
 @keyframes logoPhotoDrift{0%,22%{transform:scale(1.085) translateX(-.4%)}100%{transform:scale(1) translateX(0)}}
 .motion-off .hero-photo{animation:none!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){.logo-photo-reveal .hero-photo{animation:none!important;transform:none!important}}
+
+/* Photo expands upward from the lower edge after the opening line. */
+.hero-media{position:absolute;inset:0;overflow:hidden;transform-origin:center bottom}
+.logo-photo-reveal .hero-media{animation:heroRise 2s 1.65s cubic-bezier(.22,1,.36,1) both}
+@keyframes heroRise{from{clip-path:inset(72% 16% 0);transform:translateY(22px)}to{clip-path:inset(0);transform:none}}
+@media(max-width:700px){
+ .hero{height:auto;background:#063a5c;padding-bottom:58px}
+ .hero-media{position:relative;inset:auto;aspect-ratio:1.9}
+ .hero-photo{object-fit:cover;object-position:58% center;animation:none!important;transform:none!important}
+ .hero-shade{background:none}
+ .hero-text{position:relative;inset:auto;padding:25px 8% 12px}
+ .hero h1>span{font-size:clamp(43px,12vw,66px)}
+ .hero h1 small{font-size:19px}
+ .hero .eyebrow{margin-bottom:10px}
+ .scroll{bottom:21px}
+}
+.motion-off .hero-media{animation:none!important;clip-path:none!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.logo-photo-reveal .hero-media{animation:none!important;clip-path:none!important;transform:none!important}}
