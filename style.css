@@ -68,3 +68,16 @@ header{box-shadow:0 3px 10px #18394a08}.header-tools{height:32px;display:flex;ju
 /* Keep photo and icon still whenever reduced motion or the page stop control is active. */
 .motion-off .hero-photo,.motion-off.logo-photo-reveal .hero-photo{animation:none!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){.hero-photo,.logo-photo-reveal .hero-photo{animation:none!important;transform:none!important}.menu-icon>span{transition:none}}
+
+/* Keep the desktop headline below the two faces throughout the photo zoom. */
+@media(min-width:701px){.hero-text{top:auto;bottom:80px}}
+/* Letters settle into normal flow; interruption or motion-off always leaves text readable. */
+.recruit-letter{display:inline-block}
+@media(max-width:700px){
+ .hero h1>.recruit-word{animation:none}
+ .recruit-letter{opacity:1;transform:none;animation:recruitLetterRise .72s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.12s + var(--letter)*.075s)}
+ .logo-photo-reveal .recruit-letter{animation-delay:calc(2.65s + var(--letter)*.075s)}
+}
+@keyframes recruitLetterRise{from{opacity:0;transform:translateY(.65em)}to{opacity:1;transform:none}}
+.motion-off .recruit-letter{animation:none!important;opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.recruit-letter{animation:none!important;opacity:1!important;transform:none!important}}
